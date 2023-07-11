@@ -15,6 +15,7 @@ public class CustomerController {
   @Autowired
   CustomerService customerService;
 
+  //POST : localhost:8080/api/v1/customers
 
   @PostMapping
   public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
@@ -22,12 +23,14 @@ public class CustomerController {
     return new ResponseEntity<>(savedCustomer , HttpStatus.CREATED);
   }
 
-
+  //GET : localhost:8080/api/v1/customers
   @GetMapping
   public ResponseEntity<List<Customer>> findAllCustomer(){
     List<Customer> allCustomer = customerService.findAllCustomer();
     return new ResponseEntity<>(allCustomer , HttpStatus.FOUND);
   }
+
+  //GET : localhost:8080/api/v1/customers/{id}
 
   @GetMapping("{id}")
   public ResponseEntity<Customer> findByIdCustomer(@PathVariable("id") Long id){
@@ -35,13 +38,14 @@ public class CustomerController {
     return new ResponseEntity<>(byIdCustomer , HttpStatus.FOUND);
   }
 
-
+  //PUT : localhost:8080/api/v1/customers/{id}
   @PutMapping("{id}")
   public ResponseEntity<String> updateCustomer(@PathVariable("id") Long id , @RequestBody Customer customer){
     customerService.updateCustomerById(id , customer);
     return new ResponseEntity<>("Update Successfully!",HttpStatus.OK);
   }
 
+  //DELETE : localhost:8080/api/v1/customers
 
   @DeleteMapping("{id}")
   public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long id ){

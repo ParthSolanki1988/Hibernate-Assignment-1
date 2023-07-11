@@ -16,6 +16,7 @@ public class AccountController {
   @Autowired
   AccountService accountService;
 
+  //POST : localhost:8080/api/v1/accounts
 
   @PostMapping
   public ResponseEntity<Account> createAccount(@RequestBody Account account){
@@ -23,12 +24,15 @@ public class AccountController {
     return new ResponseEntity<>(savedAccount , HttpStatus.CREATED);
   }
 
+  //GET : localhost:8080/api/v1/accounts
 
   @GetMapping
   public ResponseEntity<List<Account>> getAllAccount(){
     List<Account> allAccount = accountService.getAllAccount();
     return new ResponseEntity<>(allAccount , HttpStatus.FOUND);
   }
+
+  //GET : localhost:8080/api/v1/accounts/{id}
 
   @GetMapping("{id}")
   public ResponseEntity<Account> getById(@PathVariable("id") Long id){
