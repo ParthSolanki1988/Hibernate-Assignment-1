@@ -1,6 +1,8 @@
 package com.simform.hibernate_assignment_1.service;
 
+
 import com.simform.hibernate_assignment_1.entity.Customer;
+
 import com.simform.hibernate_assignment_1.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +16,11 @@ public class CustomerService {
   CustomerRepository customerRepository;
 
 
+
+
   public Customer createCustomer(Customer customer) {
     customer.getAccounts().forEach(account -> account.setCustomer(customer));
-    Customer save = customerRepository.save(customer);
-    return save;
+    return customerRepository.save(customer);
   }
 
   public List<Customer> findAllCustomer() {
@@ -26,7 +29,7 @@ public class CustomerService {
   }
 
 
-  public String findById(Long id , Customer customer) {
+  public String updateCustomerById(Long id , Customer customer) {
     Customer existingCustomer = customerRepository.findById(id).orElse(null);
     existingCustomer.setFirstName(customer.getFirstName());
     existingCustomer.setLastName(customer.getLastName());

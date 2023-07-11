@@ -1,5 +1,6 @@
 package com.simform.hibernate_assignment_1.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -30,7 +31,6 @@ public class Account {
   /*When Serializing "Account" object to JSON , the 'customer' property will be ignored , preventing infinite loop  */
   /*At other hand (In Customer class ) 'account' property in "Customer " object will be serialized as usual  */
 //  @JsonBackReference
-
   private Customer customer;
 
 

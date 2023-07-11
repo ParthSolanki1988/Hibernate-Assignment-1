@@ -13,8 +13,8 @@ public class AccountService {
   @Autowired
   AccountRepository accountRepository;
 
-
   public Account createAccount(Account account) {
+    //get transactions from account table and set into transaction table
     account.getTransactions().forEach(transaction -> transaction.setAccount(account));
     Account saveAccount = accountRepository.save(account);
     return saveAccount;

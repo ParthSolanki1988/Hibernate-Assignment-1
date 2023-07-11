@@ -16,11 +16,13 @@ public class AccountController {
   @Autowired
   AccountService accountService;
 
+
   @PostMapping
   public ResponseEntity<Account> createAccount(@RequestBody Account account){
     Account savedAccount = accountService.createAccount(account);
     return new ResponseEntity<>(savedAccount , HttpStatus.CREATED);
   }
+
 
   @GetMapping
   public ResponseEntity<List<Account>> getAllAccount(){
